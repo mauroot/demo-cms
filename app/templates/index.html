@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+	<br/>
+	<br/>
+	<a class="btn btn-primary" href="{{ url_for('new') }}">New page</a>
+	<br/>
+
+	{% for page in pages %}
+		<div class="my-3 p-3 bg-white rounded shadow-sm">
+			<a href="{{ url_for('view', page_id=page.id) }}"><h3 class="border-bottom border-gray pb-2 mb-0">{{ page.title|truncate(150) }}</h3></a>
+			<div class="media text-muted pt-3">			
+				<span>{{ page.content|truncate(150)|safe }}</span>
+			</div>		
+		</div>
+	{% endfor %}
+
+{% endblock %}

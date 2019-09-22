@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+	<br/>
+	<br/>
+	<form action="{{ url_for('save') }}" method="POST">
+		<input placeholder="Write title..." type="text" name="title"/>
+		<br/>
+		<br/>
+
+		<!-- WYSIWYG editor -->
+		<div id="toolbar">
+			<nav class="nav">
+				<a class="nav-link label label-primary" data-wysihtml5-command="bold">bold</a>
+				<a class="nav-link label label-primary" data-wysihtml5-command="italic">italic</a>
+				<a class="nav-link label label-primary" data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1">h1</a>
+				<a class="nav-link label label-primary" data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h2">h2</a>
+				<a class="nav-link label label-primary" data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h3">h3</a>
+				<a class="nav-link label label-primary" data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="p">p</a>
+				<a class="nav-link label label-primary" data-wysihtml5-command="insertBlockQuote">blockquote</a>
+				<a class="nav-link label label-primary" data-wysihtml5-command="insertUnorderedList">bullet list</a>
+				<a class="nav-link label label-primary" data-wysihtml5-command="insertOrderedList">number list</a>
+			</nav>
+		</div>
+		<textarea id="editor" rows="20", cols="100" name="content" data-placeholder="Write content...">
+		</textarea>
+
+		<br/>
+		<input type="submit" class="btn btn-info" value="Create"/>
+	</form>
+
+	<script>
+	  var editor = new wysihtml5.Editor('editor', {toolbar: 'toolbar', parserRules:  wysihtml5ParserRules });
+	</script>
+
+{% endblock %}

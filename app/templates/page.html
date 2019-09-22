@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<br/>
+<a href="{{ url_for('index') }}"><small>Home</small></a>
+<br/><br/>
+	<h2>{{ title }} </h2>
+		
+		<a href="{{ url_for('edit', page_id=id) }}"><button type="button" class="btn btn-info">Edit</button></a>
+		<a href="{{ url_for('delete', page_id=id) }}"><button type="button" class="btn btn-danger">Delete</button></a>
+
+		<br/><br/>
+	{{ content|safe }}
+{% endblock %}
